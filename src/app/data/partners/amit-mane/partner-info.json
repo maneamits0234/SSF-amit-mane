@@ -1,0 +1,50 @@
+{
+    "company": {
+        "name": "Mahalaxmi Ayurveda",
+        "nameMarathi": "महालक्ष्मी आयुर्वेद",
+        "tagline": "Nature's Wisdom",
+        "taglineMarathi": "निसर्गाचे ज्ञान",
+        "mission": "To offer responsible, guidance-led Ayurvedic care with a primary focus on diabetes and metabolic health.",
+        "core_belief": "True wellness comes from balance, consistency, and addressing root imbalances rather than just surface symptoms.",
+        "founder": "Amit Mane",
+        "specialization": "Diabetic Care & Metabolic Health",
+        "description": "The company specializes in metabolic health because diabetes impacts multiple body systems, including digestion, energy levels, and detoxification. Their products are designed as Ayurvedic nutritional support to complement (not replace) prescribed medical care.",
+        "core_philosophy": {
+            "pillars": [
+                {
+                    "name": "Natural Support",
+                    "description": "Working with the body's natural processes."
+                },
+                {
+                    "name": "Root-Cause Focus",
+                    "description": "Addressing the source of health issues."
+                },
+                {
+                    "name": "Consistency",
+                    "description": "Encouraging long-term habits over 'quick fixes.'"
+                },
+                {
+                    "name": "Guidance",
+                    "description": "Providing expert advice alongside their herbal formulations."
+                }
+            ]
+        },
+        "commitments": [
+            "Use of authentic Ayurvedic principles.",
+            "Selection of premium herbal ingredients.",
+            "Transparency in wellness practices.",
+            "10-day return policy for unused products in original packaging."
+        ],
+        "contact": {
+            "address": "A/P Shirol, Dist. Kolhapur, Maharashtra, India - 416103",
+            "email": "info@mahalaxmiayurveda.com",
+            "phone": [
+                "9579164967"
+            ],
+            "social": {
+                "facebook": "",
+                "instagram": ""
+            }
+        }
+    }
+}

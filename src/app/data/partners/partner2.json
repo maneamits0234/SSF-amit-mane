@@ -1,0 +1,88 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Partner 2 - Organic Turmeric",
+      "nameMarathi": "पार्टनर २ - शुद्ध हळद",
+      "category": "Herbs & Spices",
+      "categoryMarathi": "औषधी वनस्पती",
+      "price": 350,
+      "originalPrice": 450,
+      "image": "https://images.unsplash.com/photo-1768729340925-2749ecdc211c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxheXVydmVkaWMlMjBoZXJicyUyMHR1cm1lcmljfGVufDF8fHx8MTc3NTIwMTI1MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "shortDescription": "Partner 2 special turmeric blend",
+      "shortDescriptionMarathi": "पार्टनर २ हळद मिश्रण",
+      "description": "Special blend for Partner 2. 100% Pure and Organic Turmeric Powder sourced from certified organic farms.",
+      "descriptionMarathi": "पार्टनर २ साठी खास मिश्रण. १००% शुद्ध आणि ऑर्गॅनिक हळद पावडर.",
+      "benefits": [
+        "Anti-inflammatory",
+        "Antioxidant"
+      ],
+      "benefitsMarathi": [
+        "दाहकविरोधी",
+        "अँटीऑक्सिडंट"
+      ],
+      "ingredients": [
+        "100% Organic Turmeric"
+      ],
+      "isNew": true,
+      "ingredientsMarathi": [
+        "100% ऑर्गॅनिक हळद"
+      ],
+      "howToUse": "Mix with warm milk.",
+      "howToUseMarathi": "कोमट दुधात मिसळा.",
+      "inStock": true,
+      "featured": false,
+      "phoneNumber": "+918888888888",
+      "whatsappNumber": "918888888888"
+    },
+    {
+      "id": 2,
+      "name": "Partner 2 - Organic Turmeric",
+      "nameMarathi": "पार्टनर २ - शुद्ध हळद",
+      "category": "Herbs & Spices",
+      "categoryMarathi": "औषधी वनस्पती",
+      "price": 350,
+      "originalPrice": 450,
+      "image": "https://images.unsplash.com/photo-1768729340925-2749ecdc211c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxheXVydmVkaWMlMjBoZXJicyUyMHR1cm1lcmljfGVufDF8fHx8MTc3NTIwMTI1MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "shortDescription": "Partner 2 special turmeric blend",
+      "shortDescriptionMarathi": "पार्टनर २ हळद मिश्रण",
+      "description": "Special blend for Partner 2. 100% Pure and Organic Turmeric Powder sourced from certified organic farms.",
+      "descriptionMarathi": "पार्टनर २ साठी खास मिश्रण. १००% शुद्ध आणि ऑर्गॅनिक हळद पावडर.",
+      "benefits": [
+        "Anti-inflammatory",
+        "Antioxidant"
+      ],
+      "benefitsMarathi": [
+        "दाहकविरोधी",
+        "अँटीऑक्सिडंट"
+      ],
+      "ingredients": [
+        "100% Organic Turmeric"
+      ],
+      "ingredientsMarathi": [
+        "100% ऑर्गॅनिक हळद"
+      ],
+      "howToUse": "Mix with warm milk.",
+      "howToUseMarathi": "कोमट दुधात मिसळा.",
+      "inStock": true,
+      "featured": true,
+      "phoneNumber": "+918888888888",
+      "whatsappNumber": "918888888888"
+    }
+  ],
+  "contactInfo": {
+    "phone": "+91 88888 88888",
+    "whatsapp": "918888888888",
+    "email": "contact@partner2.com",
+    "address": "456, Partner 2 Plaza, Mumbai, Maharashtra 400001",
+    "addressMarathi": "४५६, पार्टनर २ प्लाझा, मुंबई, महाराष्ट्र ४००००१"
+  },
+  "foundationInfo": {
+    "name": "Partner 2 Health Foundation",
+    "nameMarathi": "पार्टनर २ आरोग्य प्रतिष्ठान",
+    "tagline": "Partner 2 - Excellence in Wellness",
+    "taglineMarathi": "पार्टनर २ - आरोग्यामध्ये उत्कृष्टता",
+    "description": "Partner 2 dedicated foundation for health.",
+    "descriptionMarathi": "आरोग्यासाठी समर्पित पार्टनर २ प्रतिष्ठान."
+  }
+}

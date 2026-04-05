@@ -1,0 +1,504 @@
+{
+    "products": [
+        {
+            "id": "antox-d-t-combo",
+            "name": "ANTOX-D and ANTOX-T Combo",
+            "category": "Ayurvedic Supplement",
+            "type": "Ayurvedic nutritional supplement kit",
+            "primary_use": "Metabolic health and diabetic support",
+            "price": {
+                "mrp": 5200,
+                "discounted_price": 4800,
+                "grand_total_including_gst": 5040,
+                "currency": "INR"
+            },
+            "rating": 4.9,
+            "rating_scale": 5,
+            "key_ingredients": [
+                "Bitter gourd extract",
+                "Jamun",
+                "Neem",
+                "Fenugreek",
+                "Triphala",
+                "Gulvel (Giloy)",
+                "Ashwagandha",
+                "Shatavari"
+            ],
+            "shortDescription": "Ayurvedic combo for metabolic health & diabetes support",
+            "description": "The ANTOX-D and ANTOX-T combo is an Ayurvedic nutritional supplement kit primarily designed for metabolic health and diabetic support.",
+            "benefits": [
+                "Increases efficiency of the pancreas",
+                "Reduces side effects on kidneys; heals wounds",
+                "Reduces numbness/swelling in limbs; aids eyesight",
+                "Improves memory; reduces depression and fatigue",
+                "Eliminates toxins from body and blood",
+                "Helps with weight loss and cholesterol",
+                "Relieves stress and boosts immunity"
+            ],
+            "ingredients": [
+                "Bitter gourd extract",
+                "Jamun",
+                "Neem",
+                "Fenugreek",
+                "Triphala",
+                "Gulvel (Giloy)",
+                "Ashwagandha",
+                "Shatavari"
+            ],
+            "howToUse": "Boil half a sachet of Antox-T in 100 ml of water. Add 5 ml of Antox-D liquid. Consume on empty stomach in morning and 1 hour before dinner. Follow diet chart and exercise.",
+            "inStock": true,
+            "featured": true,
+            "components": [
+                {
+                    "name": "ANTOX-D",
+                    "form": "Liquid",
+                    "benefits": {
+                        "organ_support": "Increases efficiency of the pancreas",
+                        "diabetic_care": "Reduces side effects on kidneys; heals wounds",
+                        "physical_health": "Reduces numbness/swelling in limbs; aids eyesight",
+                        "mental_wellness": "Improves memory; reduces depression and fatigue"
+                    }
+                },
+                {
+                    "name": "ANTOX-T",
+                    "form": "Tea / Powder",
+                    "benefits": {
+                        "organ_support": "Eliminates toxins from body and blood",
+                        "diabetic_care": "Beneficial for general diabetes problems",
+                        "physical_health": "Helps with weight loss and cholesterol",
+                        "mental_wellness": "Relieves stress and boosts immunity"
+                    }
+                }
+            ],
+            "usage_instructions": {
+                "course_duration_recommended": "3 months",
+                "preparation": "Boil half a sachet of Antox-T in 100 ml of water.",
+                "mixing": "Add 5 ml of Antox-D liquid to the prepared tea.",
+                "timing": "Consume on an empty stomach in the morning and again 1 hour before dinner.",
+                "additional_requirements": "Follow the provided diet chart and exercise routine."
+            }
+        },
+        {
+            "id": "antox-amrut51-t-combo",
+            "name": "ANTOX AMRUT-51 and ANTOX-T Combo",
+            "category": "Ayurvedic Supplement",
+            "type": "Ayurvedic health supplement kit",
+            "primary_use": "Internal strength, immunity, and metabolic wellness",
+            "price": {
+                "mrp": 5100,
+                "discounted_price": 4800,
+                "grand_total_including_gst": 5040,
+                "currency": "INR"
+            },
+            "availability": "Limited Time Offer",
+            "rating": 4.9,
+            "rating_scale": 5,
+            "shortDescription": "Ayurvedic kit for internal strength, immunity & metabolic wellness",
+            "description": "The ANTOX AMRUT-51 and ANTOX-T combo is an Ayurvedic health supplement kit designed to support internal strength, immunity, and metabolic wellness.",
+            "benefits": [
+                "Supports internal protection and overall immunity",
+                "Helps manage healthy blood sugar levels and supports digestion/gut health",
+                "Supports daily energy, strength, and heart health",
+                "Helps manage stress, improves sleep, and supports brain health/focus",
+                "Aids in managing internal inflammation, urinary system health, and weight management"
+            ],
+            "ingredients": [
+                "Noni",
+                "Safed Musli",
+                "Berry extracts",
+                "natural herbs",
+                "spices",
+                "Green Tea",
+                "Cinnamon",
+                "Cardamom",
+                "Nutmeg",
+                "Black Pepper",
+                "Cloves",
+                "Ginger",
+                "Lemongrass",
+                "Stevia"
+            ],
+            "howToUse": "Best results achieved with daily, regular use as advised by a healthcare expert. Should be used with healthy food habits and a consistent routine.",
+            "inStock": true,
+            "featured": false,
+            "components": [
+                {
+                    "name": "ANTOX AMRUT-51",
+                    "form": "Herbal Extracted Liquid",
+                    "key_ingredients": [
+                        "Noni",
+                        "Safed Musli",
+                        "Berry extracts",
+                        "natural herbs",
+                        "spices"
+                    ]
+                },
+                {
+                    "name": "ANTOX-T",
+                    "form": "Herbal Tea",
+                    "key_ingredients": [
+                        "Green Tea",
+                        "Cinnamon",
+                        "Cardamom",
+                        "Nutmeg",
+                        "Black Pepper",
+                        "Cloves",
+                        "Ginger",
+                        "Lemongrass",
+                        "Stevia"
+                    ]
+                }
+            ],
+            "key_benefits": {
+                "immunity_and_defense": "Supports internal protection and overall immunity.",
+                "metabolic_health": "Helps manage healthy blood sugar levels and supports digestion/gut health.",
+                "vitality": "Supports daily energy, strength, and heart health.",
+                "mental_wellness": "Helps manage stress, improves sleep, and supports brain health/focus.",
+                "physical_maintenance": "Aids in managing internal inflammation, urinary system health, and weight management."
+            },
+            "usage_guidelines": {
+                "how_to_use": "Best results achieved with daily, regular use as advised by a healthcare expert.",
+                "lifestyle": "Should be used in conjunction with healthy food habits and a consistent routine.",
+                "notes": "This is a health supplement for daily wellness; results may vary by individual."
+            }
+        },
+        {
+            "id": "antox-x-t-combo",
+            "name": "ANTOX-X and ANTOX-T Combo",
+            "category": "Ayurvedic Supplement",
+            "type": "Ayurvedic nutritional kit",
+            "primary_use": "Enhance physical stamina, immunity, and metabolic health",
+            "price": {
+                "mrp": 5200,
+                "discounted_price": 4800,
+                "grand_total_including_gst": 5040,
+                "currency": "INR"
+            },
+            "rating": 4.9,
+            "rating_scale": 5,
+            "key_features": "Gentle formula, suitable for all skin types, crafted with premium ingredients.",
+            "shortDescription": "Ayurvedic kit for stamina, immunity & metabolic health",
+            "description": "The ANTOX-X and ANTOX-T combo is an Ayurvedic nutritional kit designed to enhance physical stamina, immunity, and metabolic health.",
+            "benefits": [
+                "Improves muscle strength, stamina, liver strength, and immunity",
+                "Helps control stress levels",
+                "Aids in weight loss, cholesterol reduction, and detoxification",
+                "Beneficial for diabetes and stress relief"
+            ],
+            "ingredients": [
+                "Citrulline",
+                "Carnitine",
+                "Fenugreek",
+                "Gokhru",
+                "Kavach Beej",
+                "Ashwagandha",
+                "Safed Musli",
+                "Nutmeg",
+                "Pomegranate Juice Powder",
+                "Green Tea",
+                "Cinnamon",
+                "Cardamom",
+                "Black Pepper",
+                "Cloves",
+                "Ginger",
+                "Lemongrass",
+                "Stevia"
+            ],
+            "howToUse": "Take 2 teaspoons (10g) of ANTOX-X powder in 100 ml of milk after dinner. For ANTOX-T: stop homemade tea, make 5 cups of decoction from 1 tea bag and consume throughout the day.",
+            "inStock": true,
+            "featured": false,
+            "components": [
+                {
+                    "name": "ANTOX-X",
+                    "form": "Powder",
+                    "key_ingredients": [
+                        "Citrulline",
+                        "Carnitine",
+                        "Fenugreek",
+                        "Gokhru",
+                        "Kavach Beej",
+                        "Ashwagandha",
+                        "Safed Musli",
+                        "Nutmeg",
+                        "Pomegranate Juice Powder"
+                    ],
+                    "primary_benefits": "Improves muscle strength, stamina, liver strength, and immunity. Helps control stress levels."
+                },
+                {
+                    "name": "ANTOX-T",
+                    "form": "Tea (Decoction)",
+                    "key_ingredients": [
+                        "Green Tea",
+                        "Cinnamon",
+                        "Cardamom",
+                        "Nutmeg",
+                        "Black Pepper",
+                        "Cloves",
+                        "Ginger",
+                        "Lemongrass",
+                        "Stevia"
+                    ],
+                    "primary_benefits": "Aids in weight loss, cholesterol reduction, and detoxification. Beneficial for diabetes and stress relief."
+                }
+            ],
+            "usage_instructions": {
+                "course_duration_recommended": "3 months",
+                "antox_x": "Take 2 teaspoons (10g) of powder in 100 ml of milk after dinner.",
+                "antox_t": "Stop drinking homemade tea. Instead, make 5 cups of decoction from 1 tea bag of Antox-T and consume throughout the day.",
+                "note": "This is a nutritional product intended to fulfill nutritional deficiencies and increase physical/mental strength."
+            }
+        },
+        {
+            "id": "antox-b-acid-t-combo",
+            "name": "ANTOX B-ACID and ANTOX-T Combo",
+            "category": "Ayurvedic Supplement",
+            "type": "Ayurvedic herbal solution",
+            "primary_use": "Address acidity, digestive issues, and overall metabolic detoxification",
+            "price": {
+                "mrp": 5200,
+                "discounted_price": 4800,
+                "grand_total_including_gst": 5040,
+                "currency": "INR"
+            },
+            "rating": 4.9,
+            "rating_scale": 5,
+            "certification": "EH herbal product, certified by a government-approved lab (no side effects)",
+            "key_features": "Gentle yet powerful formula crafted with premium ingredients, suitable for all skin types.",
+            "shortDescription": "Ayurvedic solution for acidity, digestion & detox",
+            "description": "The ANTOX B-ACID and ANTOX-T combo is an Ayurvedic herbal solution specifically formulated to address acidity, digestive issues, and overall metabolic detoxification.",
+            "benefits": [
+                "Improves digestion; cleans stomach thoroughly",
+                "Reduces dizziness, headaches, and vomiting caused by acidity",
+                "Promotes peaceful sleep",
+                "Eliminates toxins from the body and blood",
+                "Beneficial for diabetes and cholesterol reduction",
+                "Increases immunity; helps with weight loss and stress relief"
+            ],
+            "ingredients": [
+                "Green Tea",
+                "Cinnamon",
+                "Cardamom",
+                "Nutmeg",
+                "Black Pepper",
+                "Cloves",
+                "Ginger",
+                "Lemongrass",
+                "Stevia"
+            ],
+            "howToUse": "Stroke the bottle 47 times before use. Add 7 drops into 1 cup of normal water. Take 3 times a day on an empty stomach. For acute acidity, can be taken anytime.",
+            "inStock": true,
+            "featured": false,
+            "components": [
+                {
+                    "name": "ANTOX B-ACID",
+                    "form": "Liquid (drops)",
+                    "benefits": {
+                        "digestion": "Improves digestion; cleans stomach thoroughly",
+                        "symptom_relief": "Reduces dizziness, headaches, and emesis (vomiting) caused by acidity",
+                        "wellness": "Promotes peaceful sleep"
+                    }
+                },
+                {
+                    "name": "ANTOX-T",
+                    "form": "Herbal Tea",
+                    "key_ingredients": [
+                        "Green Tea",
+                        "Cinnamon",
+                        "Cardamom",
+                        "Nutmeg",
+                        "Black Pepper",
+                        "Cloves",
+                        "Ginger",
+                        "Lemongrass",
+                        "Stevia"
+                    ],
+                    "benefits": {
+                        "digestion": "Eliminates toxins from the body and blood",
+                        "symptom_relief": "Beneficial for diabetes and cholesterol reduction",
+                        "wellness": "Increases immunity; helps with weight loss and stress relief"
+                    }
+                }
+            ],
+            "usage_instructions": {
+                "course_duration_recommended": "3 months",
+                "preparation": "Stroke the bottle 47 times before use.",
+                "dosage": "Add 7 drops into 1 cup of normal water.",
+                "frequency": "Take 3 times a day on an empty stomach.",
+                "special_note": "If experiencing acute acidity, it can be taken anytime as needed."
+            }
+        },
+        {
+            "id": "antox-hlk-t-combo",
+            "name": "ANTOX-HLK and ANTOX-T Combo",
+            "category": "Ayurvedic Supplement",
+            "type": "Ayurvedic nutritional kit",
+            "primary_use": "Support heart, liver, and kidney efficiency while promoting overall metabolic health",
+            "price": {
+                "mrp": 5200,
+                "discounted_price": 4800,
+                "grand_total_including_gst": 5040,
+                "currency": "INR"
+            },
+            "rating": 4.9,
+            "rating_scale": 5,
+            "availability": "Limited Time Offer",
+            "shortDescription": "Ayurvedic kit for heart, liver, kidney & metabolic health",
+            "description": "The ANTOX-HLK and ANTOX-T combo is an Ayurvedic nutritional kit formulated to support heart, liver, and kidney efficiency while promoting overall metabolic health.",
+            "benefits": [
+                "Increases efficiency of heart, liver, and kidney",
+                "Reduces shortness of breath and chest strain",
+                "Helps maintain heart beat and control high BP",
+                "Removes fat from the liver; improves kidney function",
+                "Eliminates toxins from the body and blood",
+                "Beneficial for reducing cholesterol",
+                "Beneficial for managing diabetes",
+                "Helps in weight loss and increases immunity",
+                "Beneficial in relieving stress"
+            ],
+            "ingredients": [
+                "Arjuna",
+                "Giloy",
+                "Triphala",
+                "Punarnava",
+                "Fenugreek",
+                "Ashwagandha",
+                "Pomegranate peel",
+                "Curry leaves",
+                "Black pepper",
+                "Lendi",
+                "Pimpali",
+                "Ova"
+            ],
+            "howToUse": "Boil half a sachet of Antox-T in 100 ml of water. Add 5 ml of Antox-HLK liquid. Consume on an empty stomach in the morning and again 1 hour before dinner.",
+            "inStock": true,
+            "featured": false,
+            "key_ingredients": [
+                "Arjuna",
+                "Giloy",
+                "Triphala",
+                "Punarnava",
+                "Fenugreek",
+                "Ashwagandha",
+                "Pomegranate peel",
+                "Curry leaves",
+                "Black pepper",
+                "Lendi",
+                "Pimpali",
+                "Ova"
+            ],
+            "components": [
+                {
+                    "name": "ANTOX-HLK",
+                    "form": "Liquid",
+                    "benefits": {
+                        "organ_support": "Increases efficiency of heart, liver, and kidney",
+                        "cardiovascular": "Reduces shortness of breath and chest strain",
+                        "regulation": "Helps maintain heart beat and control high BP",
+                        "metabolism": "Removes fat from the liver; improves kidney function"
+                    }
+                },
+                {
+                    "name": "ANTOX-T",
+                    "form": "Tea",
+                    "benefits": {
+                        "organ_support": "Eliminates toxins from the body and blood",
+                        "cardiovascular": "Beneficial for reducing cholesterol",
+                        "regulation": "Beneficial for managing diabetes",
+                        "metabolism": "Helps in weight loss and increases immunity",
+                        "wellness": "Beneficial in relieving stress"
+                    }
+                }
+            ],
+            "usage_instructions": {
+                "course_duration_recommended": "3 months along with proper diet and exercise",
+                "preparation": "Boil half a sachet of Antox-T in 100 ml of water.",
+                "mixing": "Add 5 ml of Antox-HLK liquid to the tea.",
+                "frequency": "Consume on an empty stomach in the morning and again 1 hour before dinner."
+            }
+        },
+        {
+            "id": "antox-pn-combo",
+            "name": "ANTOX-PN POWDER and ANTOX-PN OIL Combo",
+            "category": "Ayurvedic Supplement",
+            "type": "Ayurvedic nutritional kit",
+            "primary_use": "Improve bone strength, joint flexibility, and skin health",
+            "price": {
+                "mrp": 5200,
+                "discounted_price": 4800,
+                "grand_total_including_gst": 5040,
+                "currency": "INR"
+            },
+            "rating": 4.9,
+            "rating_scale": 5,
+            "availability": "Limited Time Offer",
+            "shortDescription": "Ayurvedic kit for bone strength, joint flexibility & skin health",
+            "description": "The ANTOX-PN POWDER and ANTOX-PN OIL combo is an Ayurvedic nutritional kit formulated to improve bone strength, joint flexibility, and skin health.",
+            "benefits": [
+                "Treats arthritis and rheumatism",
+                "Helps join broken bones and maintain cartilage",
+                "Fulfills deficiencies in protein, calcium, and minerals",
+                "Prevents bone loss in post-menopausal women",
+                "Reduces skin wrinkles associated with aging",
+                "Reduces all types of joint pain and inflammation",
+                "Removes 'Vata' (gas/imbalance) from joints",
+                "Can be used for body massage",
+                "Reduces skin dryness"
+            ],
+            "ingredients": [
+                "Turmeric",
+                "Hadjod",
+                "Moringa",
+                "Pineapple Bromelain",
+                "Collagen",
+                "Vitamin D3",
+                "Calcium",
+                "Vitamin C"
+            ],
+            "howToUse": "Powder: Mix 10g (2 teaspoons) in a cup of lukewarm milk once daily. Oil: Stroke bottle first, apply 8–9 drops to affected area, massage lightly, then warm salt water compress. Repeat twice daily.",
+            "inStock": true,
+            "featured": false,
+            "key_ingredients": {
+                "herbal_extracts": [
+                    "Turmeric",
+                    "Hadjod",
+                    "Moringa",
+                    "Pineapple Bromelain"
+                ],
+                "nutrients": [
+                    "Collagen",
+                    "Vitamin D3",
+                    "Calcium",
+                    "Vitamin C"
+                ]
+            },
+            "components": [
+                {
+                    "name": "ANTOX-PN POWDER",
+                    "form": "Powder",
+                    "benefits": [
+                        "Treats arthritis and rheumatism.",
+                        "Helps join broken bones and maintain cartilage.",
+                        "Fulfills deficiencies in protein, calcium, and minerals.",
+                        "Prevents bone loss in post-menopausal women.",
+                        "Reduces skin wrinkles associated with aging."
+                    ]
+                },
+                {
+                    "name": "ANTOX-PN OIL",
+                    "form": "Oil",
+                    "benefits": [
+                        "Reduces all types of joint pain and inflammation.",
+                        "Removes 'Vata' (gas/imbalance) from joints.",
+                        "Can be used for body massage.",
+                        "Reduces skin dryness."
+                    ]
+                }
+            ],
+            "usage_instructions": {
+                "course_duration_recommended": "3 months",
+                "powder": "Mix 10g (2 teaspoons) in a cup of lukewarm milk. Take once daily.",
+                "oil": "Stroke the bottle first, then apply 8–9 drops to the affected area. Massage lightly and follow with a warm salt water compress. Repeat twice daily."
+            }
+        }
+    ]
+}
