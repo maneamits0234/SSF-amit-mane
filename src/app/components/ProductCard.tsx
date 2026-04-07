@@ -85,7 +85,7 @@ export function ProductCard({ product }: ProductCardProps) {
         {/* Price and CTA */}
         <div className="flex items-center justify-between mt-auto pt-3 border-t border-gray-100">
           <div className="flex flex-col">
-            <div className="flex items-center gap-1.5 md:gap-2">
+            <div className="flex flex-col md:flex-row md:items-center gap-0.5 md:gap-2">
               <span className="text-lg md:text-2xl font-bold text-[#2d7a3e]">
                 ₹{product.price.discounted_price}
               </span>

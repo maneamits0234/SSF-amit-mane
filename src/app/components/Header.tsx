@@ -1,5 +1,5 @@
 import { ShoppingCart, Menu, X, Leaf, Phone, Globe } from "lucide-react";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { useState } from "react";
 import { contactInfo, foundationInfo } from "../data/products";
 import { useLanguage } from "../context/LanguageContext";
@@ -12,6 +12,18 @@ interface HeaderProps {
 export function Header({ cartItemCount, onCartClick }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { language, setLanguage, t } = useLanguage();
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleNavClick = (e: React.MouseEvent, targetId: string) => {
+    e.preventDefault();
+    if (location.pathname !== '/') {
+      navigate('/#' + targetId);
+    } else {
+      document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
+    }
+    setMobileMenuOpen(false);
+  };
 
   const handleCallNow = () => {
     window.location.href = `tel:${contactInfo.phone}`;
@@ -68,32 +80,23 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
               {t("nav.home")}
             </Link>
             <a 
-              href="#products" 
+              href="/#products" 
               className="text-gray-700 hover:text-[#2d7a3e] transition-colors font-medium"
-              onClick={(e) => {
-                e.preventDefault();
-                document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
-              }}
+              onClick={(e) => handleNavClick(e, 'products')}
             >
               {t("nav.products")}
             </a>
-            <a 
-              href="#about" 
+            <Link 
+              to="/about" 
               className="text-gray-700 hover:text-[#2d7a3e] transition-colors font-medium"
-              onClick={(e) => {
-                e.preventDefault();
-                document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
-              }}
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             >
               {t("nav.about")}
-            </a>
+            </Link>
             <a 
-              href="#contact" 
+              href="/#contact" 
               className="text-gray-700 hover:text-[#2d7a3e] transition-colors font-medium"
-              onClick={(e) => {
-                e.preventDefault();
-                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-              }}
+              onClick={(e) => handleNavClick(e, 'contact')}
             >
               {t("nav.contact")}
             </a>
@@ -175,35 +178,26 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
                 {t("nav.home")}
               </Link>
               <a
-                href="#products"
+                href="/#products"
                 className="text-gray-700 hover:text-[#2d7a3e] hover:bg-gray-50 transition-colors py-3 px-2 rounded"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setMobileMenuOpen(false);
-                  document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
-                }}
+                onClick={(e) => handleNavClick(e, 'products')}
               >
                 {t("nav.products")}
               </a>
-              <a
-                href="#about"
+              <Link
+                to="/about"
                 className="text-gray-700 hover:text-[#2d7a3e] hover:bg-gray-50 transition-colors py-3 px-2 rounded"
-                onClick={(e) => {
-                  e.preventDefault();
+                onClick={() => {
                   setMobileMenuOpen(false);
-                  document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
               >
                 {t("nav.about")}
-              </a>
+              </Link>
               <a
-                href="#contact"
+                href="/#contact"
                 className="text-gray-700 hover:text-[#2d7a3e] hover:bg-gray-50 transition-colors py-3 px-2 rounded"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setMobileMenuOpen(false);
-                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                }}
+                onClick={(e) => handleNavClick(e, 'contact')}
               >
                 {t("nav.contact")}
               </a>

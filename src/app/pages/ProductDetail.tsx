@@ -64,8 +64,8 @@ export function ProductDetail() {
     const message = language === 'mr'
       ? `नमस्कार, मला ${product.name} बद्दल माहिती हवी आहे.`
       : language === 'hi'
-      ? `नमस्ते, मुझे ${product.name} के बारे में जानकारी चाहिए।`
-      : `Hello, I would like to know more about ${product.name}.`;
+        ? `नमस्ते, मुझे ${product.name} के बारे में जानकारी चाहिए।`
+        : `Hello, I would like to know more about ${product.name}.`;
     window.open(`https://wa.me/${product.whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
   };
 
@@ -136,18 +136,20 @@ export function ProductDetail() {
 
               {/* Price Section */}
               <div className="bg-gray-50 rounded-2xl p-6 mb-8 border border-gray-100">
-                <div className="flex flex-wrap items-center gap-4 mb-2">
-                  <span className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#2d7a3e]">
-                    ₹{product.price.discounted_price}
-                  </span>
+                <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 mb-2">
+                  <div className="flex items-center gap-4">
+                    <span className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#2d7a3e]">
+                      ₹{product.price.discounted_price}
+                    </span>
+                    {discount > 0 && (
+                      <span className="bg-[#d4183d] text-white px-4 py-1.5 rounded-full text-xs md:text-sm font-black shadow-sm uppercase">
+                        {t("productDetail.save")} {discount}%
+                      </span>
+                    )}
+                  </div>
                   {product.price.mrp > product.price.discounted_price && (
                     <span className="text-xl md:text-2xl text-gray-400 line-through font-medium">
                       ₹{product.price.mrp}
-                    </span>
-                  )}
-                  {discount > 0 && (
-                    <span className="bg-[#d4183d] text-white px-4 py-1.5 rounded-full text-xs md:text-sm font-black shadow-sm uppercase">
-                      {t("productDetail.save")} {discount}%
                     </span>
                   )}
                 </div>
@@ -214,7 +216,7 @@ export function ProductDetail() {
           {/* New Sections: Components & Instructions */}
           <div className="bg-gradient-to-b from-gray-50 to-white p-6 md:p-12 lg:p-16 border-t border-gray-100">
             <div className="max-w-6xl mx-auto space-y-12 md:space-y-20">
-              
+
               {/* Components Cards Section */}
               {product.components && product.components.length > 0 && (
                 <div>
@@ -226,32 +228,32 @@ export function ProductDetail() {
                     {product.components.map((comp, idx) => (
                       <div key={idx} className="bg-white rounded-3xl p-8 shadow-xl border border-gray-100 hover:border-[#2d7a3e]/30 transition-all hover:shadow-2xl flex flex-col group w-full md:w-[calc(50%-2rem)] lg:w-[calc(33.33%-2rem)] max-w-sm">
                         <div className="flex items-center justify-between mb-6">
-                           <div className="w-14 h-14 bg-[#e8f5e9] rounded-2xl flex items-center justify-center text-[#2d7a3e] group-hover:bg-[#2d7a3e] group-hover:text-white transition-colors duration-500">
-                             <Package className="w-7 h-7" />
-                           </div>
-                           <span className="bg-gray-100 text-gray-500 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest">
-                             {comp.form}
-                           </span>
+                          <div className="w-14 h-14 bg-[#e8f5e9] rounded-2xl flex items-center justify-center text-[#2d7a3e] group-hover:bg-[#2d7a3e] group-hover:text-white transition-colors duration-500">
+                            <Package className="w-7 h-7" />
+                          </div>
+                          <span className="bg-gray-100 text-gray-500 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest">
+                            {comp.form}
+                          </span>
                         </div>
                         <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4 group-hover:text-[#2d7a3e] transition-colors">{comp.name}</h3>
-                        
+
                         <div className="space-y-4 flex-grow">
-                           <div className="space-y-2">
-                             <p className="text-xs font-black text-[#8b7355] uppercase tracking-widest">{t("productDetail.benefits")}</p>
-                             <ul className="space-y-2">
-                                {(() => {
-                                  const benefits = comp.benefits 
-                                    ? (Array.isArray(comp.benefits) ? comp.benefits : Object.values(comp.benefits))
-                                    : [];
-                                  return benefits.map((b, i) => (
-                                    <li key={i} className="flex items-start gap-2 text-sm text-gray-600 font-medium">
-                                      <Check className="w-4 h-4 text-[#2d7a3e] flex-shrink-0 mt-0.5" />
-                                      <span>{b as string}</span>
-                                    </li>
-                                  ));
-                                })()}
-                             </ul>
-                           </div>
+                          <div className="space-y-2">
+                            <p className="text-xs font-black text-[#8b7355] uppercase tracking-widest">{t("productDetail.benefits")}</p>
+                            <ul className="space-y-2">
+                              {(() => {
+                                const benefits = comp.benefits
+                                  ? (Array.isArray(comp.benefits) ? comp.benefits : Object.values(comp.benefits))
+                                  : [];
+                                return benefits.map((b, i) => (
+                                  <li key={i} className="flex items-start gap-2 text-sm text-gray-600 font-medium">
+                                    <Check className="w-4 h-4 text-[#2d7a3e] flex-shrink-0 mt-0.5" />
+                                    <span>{b as string}</span>
+                                  </li>
+                                ));
+                              })()}
+                            </ul>
+                          </div>
                         </div>
                       </div>
                     ))}
@@ -261,93 +263,93 @@ export function ProductDetail() {
 
               {/* Detailed Info & Usage */}
               <div className="grid lg:grid-cols-5 gap-8 md:gap-16">
-                 {/* Left: General Info & Ingredients */}
-                 <div className="lg:col-span-3 space-y-12">
+                {/* Left: General Info & Ingredients */}
+                <div className="lg:col-span-3 space-y-12">
+                  <div>
+                    <h2 className="text-xl md:text-2xl font-black text-gray-900 mb-6 flex items-center gap-3">
+                      <Leaf className="w-6 h-6 text-[#2d7a3e]" />
+                      {t("productDetail.details")}
+                    </h2>
+                    <p className="text-lg text-gray-700 leading-relaxed font-medium">
+                      {product.description || product.shortDescription}
+                    </p>
+                  </div>
+
+                  {product.key_ingredients && (
                     <div>
-                      <h2 className="text-xl md:text-2xl font-black text-gray-900 mb-6 flex items-center gap-3">
-                        <Leaf className="w-6 h-6 text-[#2d7a3e]" />
-                        {t("productDetail.details")}
+                      <h2 className="text-lg md:text-xl font-black text-gray-900 mb-6 flex items-center gap-3">
+                        <Star className="w-5 h-5 text-amber-400" />
+                        {t("productDetail.ingredients")}
                       </h2>
-                      <p className="text-lg text-gray-700 leading-relaxed font-medium">
-                        {product.description || product.shortDescription}
-                      </p>
+                      <div className="flex flex-wrap gap-3">
+                        {(() => {
+                          const ingredients = Array.isArray(product.key_ingredients)
+                            ? product.key_ingredients
+                            : Object.values(product.key_ingredients).flat();
+                          return ingredients.map((ing, i) => (
+                            <span key={i} className="bg-white text-gray-800 px-5 py-2.5 rounded-2xl text-sm font-bold border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+                              {ing as string}
+                            </span>
+                          ));
+                        })()}
+                      </div>
                     </div>
+                  )}
+                </div>
 
-                    {product.key_ingredients && (
-                      <div>
-                        <h2 className="text-lg md:text-xl font-black text-gray-900 mb-6 flex items-center gap-3">
-                          <Star className="w-5 h-5 text-amber-400" />
-                          {t("productDetail.ingredients")}
-                        </h2>
-                        <div className="flex flex-wrap gap-3">
-                          {(() => {
-                            const ingredients = Array.isArray(product.key_ingredients)
-                              ? product.key_ingredients
-                              : Object.values(product.key_ingredients).flat();
-                            return ingredients.map((ing, i) => (
-                              <span key={i} className="bg-white text-gray-800 px-5 py-2.5 rounded-2xl text-sm font-bold border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
-                                {ing as string}
-                              </span>
-                            ));
-                          })()}
-                        </div>
+                {/* Right: Detailed Usage Instructions */}
+                {(product.usage_instructions || (product as any).usage_guidelines || (product as any).usage_guidelines) && (
+                  <div className="lg:col-span-2">
+                    <div className="bg-[#2d7a3e] rounded-3xl p-8 md:p-10 text-white shadow-2xl relative overflow-hidden h-full">
+                      {/* Decorative Leaf */}
+                      <div className="absolute top-0 right-0 opacity-10 -mr-16 -mt-16 pointer-events-none">
+                        <Leaf className="w-64 h-64" />
                       </div>
-                    )}
-                 </div>
 
-                 {/* Right: Detailed Usage Instructions */}
-                 {(product.usage_instructions || (product as any).usage_guidelines || (product as any).usage_guidelines) && (
-                   <div className="lg:col-span-2">
-                      <div className="bg-[#2d7a3e] rounded-3xl p-8 md:p-10 text-white shadow-2xl relative overflow-hidden h-full">
-                         {/* Decorative Leaf */}
-                         <div className="absolute top-0 right-0 opacity-10 -mr-16 -mt-16 pointer-events-none">
-                            <Leaf className="w-64 h-64" />
-                         </div>
+                      <h2 className="text-2xl font-black mb-8 flex items-center gap-3 relative z-10">
+                        <Check className="w-8 h-8 p-1.5 bg-white text-[#2d7a3e] rounded-full" />
+                        {t("productDetail.howToUse")}
+                      </h2>
 
-                         <h2 className="text-2xl font-black mb-8 flex items-center gap-3 relative z-10">
-                            <Check className="w-8 h-8 p-1.5 bg-white text-[#2d7a3e] rounded-full" />
-                            {t("productDetail.howToUse")}
-                         </h2>
-
-                         <div className="space-y-8 relative z-10">
-                            {(() => {
-                              const instructions = product.usage_instructions || (product as any).usage_guidelines || {};
-                              return Object.entries(instructions)
-                                .filter(([key]) => key !== 'course_duration_recommended' && key !== 'note' && key !== 'lifestyle' && key !== 'notes')
-                                .map(([key, value], idx) => (
-                                  <div key={key} className="flex gap-4">
-                                     <div className="w-8 flex flex-col items-center">
-                                        <div className="w-3 h-3 bg-white rounded-full" />
-                                        <div className="w-0.5 h-full bg-white/30 my-2" />
-                                     </div>
-                                     <div>
-                                        <p className="text-xs font-black text-white/60 uppercase tracking-widest mb-1">
-                                          {key.replace(/_/g, ' ')}
-                                        </p>
-                                        <p className="text-lg font-bold leading-tight">{value as string}</p>
-                                     </div>
-                                  </div>
-                                ));
-                            })()}
-
-                            {((product.usage_instructions?.course_duration_recommended) || (product as any).usage_guidelines?.course_duration_recommended) && (
-                               <div className="mt-8 p-6 bg-white/10 rounded-2xl border border-white/20">
-                                  <p className="text-sm font-bold flex flex-col gap-1">
-                                    <span className="text-white/70 text-xs font-black uppercase tracking-widest">{language === 'mr' ? 'शिफारस केलेला कालावधी' : language === 'hi' ? 'अनुशंसित अवधि' : 'Recommended Duration'}</span>
-                                    <span className="text-xl">{(product.usage_instructions?.course_duration_recommended) || (product as any).usage_guidelines?.course_duration_recommended}</span>
-                                  </p>
+                      <div className="space-y-8 relative z-10">
+                        {(() => {
+                          const instructions = product.usage_instructions || (product as any).usage_guidelines || {};
+                          return Object.entries(instructions)
+                            .filter(([key]) => key !== 'course_duration_recommended' && key !== 'note' && key !== 'lifestyle' && key !== 'notes')
+                            .map(([key, value], idx) => (
+                              <div key={key} className="flex gap-4">
+                                <div className="w-8 flex flex-col items-center">
+                                  <div className="w-3 h-3 bg-white rounded-full" />
+                                  <div className="w-0.5 h-full bg-white/30 my-2" />
                                 </div>
-                            )}
+                                <div>
+                                  <p className="text-xs font-black text-white/60 uppercase tracking-widest mb-1">
+                                    {key.replace(/_/g, ' ')}
+                                  </p>
+                                  <p className="text-lg font-bold leading-tight">{value as string}</p>
+                                </div>
+                              </div>
+                            ));
+                        })()}
 
-                            {((product as any).usage_guidelines?.notes || (product as any).usage_instructions?.note) && (
-                               <p className="text-xs text-white/60 italic mt-4">
-                                 {(product as any).usage_guidelines?.notes || (product as any).usage_instructions?.note}
-                               </p>
-                            )}
-                         </div>
+                        {((product.usage_instructions?.course_duration_recommended) || (product as any).usage_guidelines?.course_duration_recommended) && (
+                          <div className="mt-8 p-6 bg-white/10 rounded-2xl border border-white/20">
+                            <p className="text-sm font-bold flex flex-col gap-1">
+                              <span className="text-white/70 text-xs font-black uppercase tracking-widest">{language === 'mr' ? 'शिफारस केलेला कालावधी' : language === 'hi' ? 'अनुशंसित अवधि' : 'Recommended Duration'}</span>
+                              <span className="text-xl">{(product.usage_instructions?.course_duration_recommended) || (product as any).usage_guidelines?.course_duration_recommended}</span>
+                            </p>
+                          </div>
+                        )}
+
+                        {((product as any).usage_guidelines?.notes || (product as any).usage_instructions?.note) && (
+                          <p className="text-xs text-white/60 italic mt-4">
+                            {(product as any).usage_guidelines?.notes || (product as any).usage_instructions?.note}
+                          </p>
+                        )}
                       </div>
-                   </div>
-                 )}
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -362,29 +364,29 @@ export function ProductDetail() {
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
               {relatedProducts.map((relatedProduct) => (
-                  <Link
-                    key={relatedProduct.id}
-                    to={`/product/${relatedProduct.id}`}
-                    className="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all overflow-hidden border border-gray-100 flex flex-col"
-                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                  >
-                    <div className="aspect-square overflow-hidden bg-gray-50 p-2">
-                       <div className="w-full h-full rounded-xl overflow-hidden">
-                          <img
-                            src={relatedProduct.image}
-                            alt={relatedProduct.name}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                          />
-                       </div>
+                <Link
+                  key={relatedProduct.id}
+                  to={`/product/${relatedProduct.id}`}
+                  className="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all overflow-hidden border border-gray-100 flex flex-col"
+                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                >
+                  <div className="aspect-square overflow-hidden bg-gray-50 p-2">
+                    <div className="w-full h-full rounded-xl overflow-hidden">
+                      <img
+                        src={relatedProduct.image}
+                        alt={relatedProduct.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
                     </div>
-                    <div className="p-4 md:p-6 flex flex-col flex-grow">
-                      <p className="text-[10px] md:text-xs text-[#8b7355] mb-1 font-bold uppercase tracking-wider">{relatedProduct.category}</p>
-                      <h3 className="text-sm md:text-base font-bold text-gray-900 mb-2 line-clamp-2 leading-tight group-hover:text-[#2d7a3e] transition-colors">
-                        {relatedProduct.name}
-                      </h3>
-                      <p className="text-lg md:text-xl font-extrabold text-[#2d7a3e] mt-auto">₹{relatedProduct.price.discounted_price}</p>
-                    </div>
-                  </Link>
+                  </div>
+                  <div className="p-4 md:p-6 flex flex-col flex-grow">
+                    <p className="text-[10px] md:text-xs text-[#8b7355] mb-1 font-bold uppercase tracking-wider">{relatedProduct.category}</p>
+                    <h3 className="text-sm md:text-base font-bold text-gray-900 mb-2 line-clamp-2 leading-tight group-hover:text-[#2d7a3e] transition-colors">
+                      {relatedProduct.name}
+                    </h3>
+                    <p className="text-lg md:text-xl font-extrabold text-[#2d7a3e] mt-auto">₹{relatedProduct.price.discounted_price}</p>
+                  </div>
+                </Link>
               ))}
             </div>
           </div>

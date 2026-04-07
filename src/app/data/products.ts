@@ -101,3 +101,5 @@ export const foundationInfo = {
 };
 
 export const companyInfo = partnerInfo;
+
+export const aboutInfo = partnerData.about;
