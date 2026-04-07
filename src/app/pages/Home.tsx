@@ -5,6 +5,7 @@ import { Footer } from "../components/Footer";
 import { contactInfo, companyInfo } from "../data/products";
 import { useLanguage } from "../context/LanguageContext";
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router";
 
 export function Home() {
   const { language, t, currentProducts } = useLanguage();
@@ -12,13 +13,27 @@ export function Home() {
   const featuredProducts = currentProducts.filter(p => p.featured);
   const allProducts = currentProducts;
 
+  const location = useLocation();
+
   useEffect(() => {
     // Simulate loading delay
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 400);
+
+    // Auto-scroll logic for anchor links
+    if (location.hash) {
+      const id = location.hash.replace('#', '');
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 0);
+    }
+
     return () => clearTimeout(timer);
-  }, []);
+  }, [location.hash]);
 
   const handleCallNow = () => {
     window.location.href = `tel:${contactInfo.phone}`;
