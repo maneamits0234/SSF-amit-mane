@@ -6,6 +6,7 @@ import { contactInfo, companyInfo } from "../data/products";
 import { useLanguage } from "../context/LanguageContext";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router";
+import { motion } from "motion/react";
 
 export function Home() {
   const { language, t, currentProducts } = useLanguage();
@@ -53,17 +54,45 @@ export function Home() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
+      {/* Top Product Marquee */}
+      <div className="bg-[#2d7a3e] py-3 overflow-hidden select-none border-b border-white/10 shadow-md relative z-50">
+        <motion.div
+          animate={{ x: [0, -1500] }}
+          transition={{
+            duration: 40,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+          className="flex gap-16 whitespace-nowrap px-8"
+        >
+          {[...allProducts, ...allProducts, ...allProducts].map((product, i) => (
+            <a
+              key={`${product.id}-${i}`}
+              href={`#products`}
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="text-white/90 hover:text-white text-[10px] md:text-xs font-black tracking-[0.2em] uppercase transition-colors flex items-center gap-3"
+            >
+              <div className="w-1 h-1 rounded-full bg-white/40" />
+              {product.name}
+            </a>
+          ))}
+        </motion.div>
+      </div>
+
+      {/* Hero Section - Compacted */}
       <section className="relative bg-gradient-to-br from-[#e8f5e9] via-white to-[#fef7ed] overflow-hidden">
-        <div className="container mx-auto px-4 pt-8 pb-12 md:pt-10 md:pb-20 lg:pt-12 lg:pb-24">
+        <div className="container mx-auto px-4 pt-4 pb-10 md:pt-6 md:pb-14 lg:pt-8 lg:pb-16">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-            {/* Left Content */}
-            <div className="space-y-6 md:space-y-8 text-center lg:text-left">
+            {/* Left Content - Becomes second on mobile */}
+            <div className="space-y-4 md:space-y-6 lg:space-y-8 text-center lg:text-left order-2 lg:order-1">
               <div className="inline-block bg-[#2d7a3e]/10 text-[#2d7a3e] px-4 py-2 rounded-full text-sm font-medium">
                 {t("hero.badge")}
               </div>
 
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
                 <span className="text-[#2d7a3e]">{t("hero.title1")}</span>
                 <br />
                 {t("hero.title2")}
@@ -110,25 +139,25 @@ export function Home() {
               </div>
             </div>
 
-            {/* Right Image */}
-            <div className="relative">
+            {/* Right Image - Becomes first on mobile */}
+            <div className="relative order-1 lg:order-2">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <img
                   src="https://images.unsplash.com/photo-1705083649602-03c5fbae2e89?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxheXVydmVkaWMlMjBoZXJicyUyMG5hdHVyYWwlMjB3ZWxsbmVzc3xlbnwxfHx8fDE3NzUyMDgyMTh8MA&ixlib=rb-4.1.0&q=80&w=1080"
                   alt="Ayurvedic Products"
-                  className="w-full h-[300px] sm:h-[400px] lg:h-[500px] object-cover"
+                  className="w-full h-[220px] sm:h-[300px] lg:h-[400px] object-cover"
                 />
-                {/* Overlay Badge */}
-                <div className="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-sm p-4 rounded-xl shadow-lg">
+                {/* Overlay Badge - More compact on mobile */}
+                <div className="absolute bottom-3 left-3 right-3 md:bottom-6 md:left-6 md:right-6 bg-white/95 backdrop-blur-sm p-2 md:p-4 rounded-xl shadow-lg">
                   <div className="flex items-center gap-3">
                     <div className="flex items-center text-yellow-500">
                       {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-current" />
+                        <Star key={i} className="w-3 h-3 md:w-4 md:h-4 fill-current" />
                       ))}
                     </div>
                     <div>
-                      <p className="font-semibold text-gray-900">{t("hero.satisfied")}</p>
-                      <p className="text-sm text-gray-600">{t("hero.trusted")}</p>
+                      <p className="text-[11px] md:text-base font-bold text-gray-900 leading-tight">{t("hero.satisfied")}</p>
+                      <p className="text-[9px] md:text-sm text-gray-600">{t("hero.trusted")}</p>
                     </div>
                   </div>
                 </div>

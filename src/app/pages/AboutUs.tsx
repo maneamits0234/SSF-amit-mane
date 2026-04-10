@@ -27,20 +27,70 @@ export function AboutUs() {
 
   const productsList = [
     "ANTOX-D", "ANTOX-T", "AMRUT-51", "ANTOX-PN", "ANTOX-HLK", "ANTOX-X", "ANTOX B-ACID",
+    "ANTOX-D", "ANTOX-T", "AMRUT-51", "ANTOX-PN", "ANTOX-HLK", "ANTOX-X", "ANTOX B-ACID",
     "ANTOX-D", "ANTOX-T", "AMRUT-51", "ANTOX-PN", "ANTOX-HLK", "ANTOX-X", "ANTOX B-ACID"
   ];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" }
+    }
+  };
 
   return (
     <div className="min-h-screen bg-[#fcfaf7] flex flex-col relative overflow-hidden font-sans">
 
-      {/* Compact Hero Section */}
-      <section className="relative w-full min-h-[70vh] flex flex-col items-center justify-center pt-10 pb-16 px-6 overflow-hidden">
+      {/* Compact Hero Section - Full height green on mobile */}
+      <section className="relative w-full min-h-screen md:min-h-[70vh] flex flex-col items-center justify-center pt-10 pb-16 px-6 overflow-hidden">
 
-        {/* Stable Background Split */}
+        {/* Stable Background Split - Full green on mobile */}
         <div className="absolute inset-0 z-0 flex flex-col md:flex-row">
           <div className="w-full md:w-[60%] h-full" style={{ backgroundColor: colors.forest }} />
-          <div className="w-full md:w-[40%] h-full" style={{ backgroundColor: colors.earth }} />
+          <div className="hidden md:block md:w-[40%] h-full" style={{ backgroundColor: colors.earth }} />
         </div>
+
+        {/* Animated Background Blobs for Visual Interest */}
+        <motion.div
+          animate={{
+            scale: [1, 1.2, 1],
+            x: [0, 50, 0],
+            y: [0, -30, 0],
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full opacity-10 blur-[120px]"
+          style={{ backgroundColor: colors.tan }}
+        />
+        <motion.div
+          animate={{
+            scale: [1, 1.3, 1],
+            x: [0, -40, 0],
+            y: [0, 60, 0],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full opacity-10 blur-[120px]"
+          style={{ backgroundColor: colors.tan }}
+        />
 
         {/* Dynamic Vertical Marquee Layer - Enhanced & Attractive */}
         <div className="absolute inset-y-0 left-[35%] md:left-[42%] w-48 z-10 hidden md:block select-none overflow-hidden pointer-events-none">
@@ -85,6 +135,33 @@ export function AboutUs() {
           />
         </div>
 
+        {/* Horizontal Mobile Ticker - Visible on Mobile Only, positioned over image area */}
+        <div className="absolute top-[0%] left-0 w-full z-10 md:hidden select-none overflow-hidden py-6 bg-[#2c5144]/80 backdrop-blur-md shadow-lg">
+          <motion.div
+            animate={{ x: [0, -1200] }}
+            transition={{
+              duration: 25,
+              repeat: Infinity,
+              ease: "linear"
+            }}
+            className="flex gap-12 whitespace-nowrap"
+          >
+            {[...productsList, ...productsList].map((item, i) => (
+              <span
+                key={i}
+                className="text-2xl font-black tracking-[0.3em]"
+                style={{
+                  opacity: i % 2 === 0 ? 0.4 : 0.2,
+                  WebkitTextStroke: i % 3 === 0 ? `1px ${colors.tan}` : 'none',
+                  color: i % 3 === 0 ? 'transparent' : colors.tan
+                }}
+              >
+                {item}
+              </span>
+            ))}
+          </motion.div>
+        </div>
+
         <div className="container mx-auto relative z-10">
           <div className="flex flex-col md:flex-row items-center justify-between gap-12 lg:gap-20">
 
@@ -95,14 +172,24 @@ export function AboutUs() {
               transition={{ duration: 0.8 }}
               className="flex flex-col items-center md:items-start text-center md:text-left max-w-xl"
             >
-              {/* Profile Image - More Compact */}
-              <div className="relative mb-8 group">
-                <div
+              {/* Profile Image - Animated & Compact */}
+              <div className="relative mb-8 group mt-18">
+                <motion.div
+                  animate={{
+                    scale: [1, 1.05, 1],
+                    rotate: [0, 2, 0, -2, 0],
+                  }}
+                  transition={{
+                    duration: 6,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
                   className="absolute inset-0 -m-2 md:-m-3 rounded-full blur-md opacity-20 group-hover:opacity-40 transition-opacity"
                   style={{ backgroundColor: colors.tan }}
                 />
-                <div
-                  className="w-32 h-32 md:w-44 md:h-44 rounded-full border-[5px] shadow-2xl overflow-hidden bg-white relative z-10"
+                <motion.div
+                  whileHover={{ scale: 1.05, rotate: 2 }}
+                  className="w-48 h-48 md:w-44 md:h-44 rounded-full border-[5px] shadow-2xl overflow-hidden bg-white relative z-10"
                   style={{ borderColor: colors.tan }}
                 >
                   <img
@@ -110,7 +197,7 @@ export function AboutUs() {
                     alt={name}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                </div>
+                </motion.div>
               </div>
 
               {/* Identity & Expert Tag */}
@@ -143,7 +230,7 @@ export function AboutUs() {
               </div>
 
               {/* Action Buttons - Grouped for "Single Frame" */}
-              <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
+              <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 mb-10">
                 <motion.a
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
@@ -201,13 +288,20 @@ export function AboutUs() {
       </section>
 
       {/* Info Sections */}
-      <section className="container mx-auto px-6 md:px-20 py-24 relative z-20">
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={containerVariants}
+        className="container mx-auto px-6 md:px-20 py-24 relative z-20"
+      >
         <div className="grid lg:grid-cols-3 gap-8 md:gap-12">
 
           {/* Work Details Card */}
           <motion.div
-            whileHover={{ y: -5 }}
-            className="lg:col-span-2 p-10 md:p-16 rounded-[3rem] bg-white shadow-xl shadow-gray-200/50 border border-gray-100 flex flex-col justify-center"
+            variants={itemVariants}
+            whileHover={{ y: -10, scale: 1.02 }}
+            className="lg:col-span-2 p-10 md:p-16 rounded-[3rem] bg-white/70 backdrop-blur-xl shadow-xl shadow-gray-200/50 border border-white flex flex-col justify-center"
           >
             <h2 className="text-xs font-black uppercase tracking-[0.4em] text-[#8b7355] mb-8">
               {language === 'mr' ? 'माझ्या कामाबद्दल' : 'About My Work'}
@@ -219,10 +313,13 @@ export function AboutUs() {
 
           {/* Contact Details Card */}
           <motion.div
-            whileHover={{ y: -5 }}
-            className="p-10 rounded-[3rem] flex flex-col justify-between overflow-hidden shadow-2xl"
+            variants={itemVariants}
+            whileHover={{ y: -10, scale: 1.02 }}
+            className="p-10 rounded-[3rem] flex flex-col justify-between overflow-hidden shadow-2xl relative"
             style={{ backgroundColor: colors.forest }}
           >
+            {/* Subtle decorative circle */}
+            <div className="absolute -top-20 -right-20 w-64 h-64 bg-white/5 rounded-full blur-3xl pointer-events-none" />
             <div>
               <h2 className="text-[10px] font-black uppercase tracking-[0.4em] text-white/40 mb-10">
                 {language === 'mr' ? 'संपर्क माहिती' : 'Contact Information'}
@@ -266,7 +363,7 @@ export function AboutUs() {
             </div>
           </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       <Footer />
     </div>
