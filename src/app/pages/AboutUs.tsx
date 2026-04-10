@@ -1,8 +1,9 @@
 import { aboutInfo } from "../data/products";
 import { useLanguage } from "../context/LanguageContext";
 import { Footer } from "../components/Footer";
-import { Mail, Phone, MapPin, Briefcase } from "lucide-react";
+import { Mail, Phone, MapPin, Briefcase, MessageCircle, Activity, ArrowRight } from "lucide-react";
 import { useEffect } from "react";
+import { motion } from "motion/react";
 
 export function AboutUs() {
   const { language, t } = useLanguage();
@@ -15,90 +16,258 @@ export function AboutUs() {
   const address = language === 'mr' && aboutInfo.addressMarathi ? aboutInfo.addressMarathi : aboutInfo.address;
   const workDetails = language === 'mr' && aboutInfo.workDetailsMarathi ? aboutInfo.workDetailsMarathi : aboutInfo.workDetails;
 
+  // Exact color palette from the reference image
+  const colors = {
+    forest: "#2c5144",
+    earth: "#5d4037",
+    tan: "#f1d4b9",
+    tanLight: "#f9e8d9",
+    greenDark: "#1a332a"
+  };
+
+  const productsList = [
+    "ANTOX-D", "ANTOX-T", "AMRUT-51", "ANTOX-PN", "ANTOX-HLK", "ANTOX-X", "ANTOX B-ACID",
+    "ANTOX-D", "ANTOX-T", "AMRUT-51", "ANTOX-PN", "ANTOX-HLK", "ANTOX-X", "ANTOX B-ACID"
+  ];
+
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
-      <div className="flex-grow container mx-auto px-4 py-12 md:py-20">
-        <div className="max-w-4xl mx-auto bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100">
-          
-          {/* Header Area / Banner */}
-          <div className="bg-[#2d7a3e] h-32 md:h-48 w-full relative">
-            <div className="absolute -bottom-16 md:-bottom-24 left-1/2 -translate-x-1/2">
-              <div className="w-32 h-32 md:w-48 md:h-48 rounded-full border-4 border-white shadow-xl overflow-hidden bg-white">
-                <img
-                  src={aboutInfo.image || "https://res.cloudinary.com/dokkp5vkv/image/upload/v1769868851/Ayurveda/products/r11qaetwwsq3k6yafeu1.jpg"}
-                  alt={name}
-                  className="w-full h-full object-cover"
+    <div className="min-h-screen bg-[#fcfaf7] flex flex-col relative overflow-hidden font-sans">
+
+      {/* Compact Hero Section */}
+      <section className="relative w-full min-h-[70vh] flex flex-col items-center justify-center pt-10 pb-16 px-6 overflow-hidden">
+
+        {/* Stable Background Split */}
+        <div className="absolute inset-0 z-0 flex flex-col md:flex-row">
+          <div className="w-full md:w-[60%] h-full" style={{ backgroundColor: colors.forest }} />
+          <div className="w-full md:w-[40%] h-full" style={{ backgroundColor: colors.earth }} />
+        </div>
+
+        {/* Dynamic Vertical Marquee Layer - Enhanced & Attractive */}
+        <div className="absolute inset-y-0 left-[35%] md:left-[42%] w-48 z-10 hidden md:block select-none overflow-hidden pointer-events-none">
+          {/* Decorative Vertical Line */}
+          <div className="absolute left-0 inset-y-0 w-px bg-white/10" />
+
+          {/* Top Fade Mask */}
+          <div
+            className="absolute top-0 inset-x-0 h-32 z-20"
+            style={{ background: `linear-gradient(to bottom, ${colors.forest}, transparent)` }}
+          />
+
+          <motion.div
+            animate={{ y: [0, -1000] }}
+            transition={{
+              duration: 50,
+              repeat: Infinity,
+              ease: "linear"
+            }}
+            className="flex flex-col gap-12 pl-6"
+          >
+            {[...productsList, ...productsList].map((item, i) => (
+              <span
+                key={i}
+                className="text-xl font-black tracking-[0.3em]"
+                style={{
+                  // color: colors.tan,
+                  opacity: i % 2 === 0 ? 0.3 : 0.1,
+                  WebkitTextStroke: i % 3 === 0 ? `1px ${colors.tan}` : 'none',
+                  color: i % 3 === 0 ? 'transparent' : colors.tan
+                }}
+              >
+                {item}
+              </span>
+            ))}
+          </motion.div>
+
+          {/* Bottom Fade Mask */}
+          <div
+            className="absolute bottom-0 inset-x-0 h-32 z-20"
+            style={{ background: `linear-gradient(to top, ${colors.forest}, transparent)` }}
+          />
+        </div>
+
+        <div className="container mx-auto relative z-10">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-12 lg:gap-20">
+
+            {/* Primary Profile Card - All in a "Single Frame" */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="flex flex-col items-center md:items-start text-center md:text-left max-w-xl"
+            >
+              {/* Profile Image - More Compact */}
+              <div className="relative mb-8 group">
+                <div
+                  className="absolute inset-0 -m-2 md:-m-3 rounded-full blur-md opacity-20 group-hover:opacity-40 transition-opacity"
+                  style={{ backgroundColor: colors.tan }}
                 />
-              </div>
-            </div>
-          </div>
-
-          {/* Profile Details */}
-          <div className="pt-20 md:pt-28 pb-10 px-6 md:px-12 text-center">
-            <h1 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-2">
-              {name}
-            </h1>
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#fef7ed] text-[#8b7355] text-sm font-bold uppercase tracking-wider mb-8">
-              {language === 'mr' ? 'आरोग्य तज्ञ' : 'Wellness Expert'}
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-3xl mx-auto mt-4 text-left">
-              {/* Contact Info Card */}
-              <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
-                <h3 className="text-lg font-bold text-gray-900 mb-6 flex items-center border-b pb-3 border-gray-200">
-                  {language === 'mr' ? 'संपर्क माहिती' : 'Contact Information'}
-                </h3>
-                
-                <div className="space-y-5">
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 bg-[#e8f5e9] rounded-full flex items-center justify-center flex-shrink-0 text-[#2d7a3e]">
-                      <Phone className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <p className="text-sm font-bold text-gray-500 uppercase">{t("contact.phone")}</p>
-                      <a href={`tel:${aboutInfo.mobileNumber}`} className="text-lg font-medium text-gray-900 hover:text-[#2d7a3e] transition-colors">{aboutInfo.mobileNumber}</a>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 bg-[#e8f5e9] rounded-full flex items-center justify-center flex-shrink-0 text-[#2d7a3e]">
-                      <Mail className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <p className="text-sm font-bold text-gray-500 uppercase">{language === 'mr' ? 'ईमेल' : 'Email'}</p>
-                      <a href={`mailto:${aboutInfo.emailId}`} className="text-base break-words font-medium text-gray-900 hover:text-[#2d7a3e] transition-colors">
-                        {aboutInfo.emailId || "contact@example.com"}
-                      </a>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 bg-[#e8f5e9] rounded-full flex items-center justify-center flex-shrink-0 text-[#2d7a3e]">
-                      <MapPin className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <p className="text-sm font-bold text-gray-500 uppercase">{language === 'mr' ? 'पत्ता' : 'Address'}</p>
-                      <p className="text-base font-medium text-gray-900 leading-snug">{address}</p>
-                    </div>
-                  </div>
+                <div
+                  className="w-32 h-32 md:w-44 md:h-44 rounded-full border-[5px] shadow-2xl overflow-hidden bg-white relative z-10"
+                  style={{ borderColor: colors.tan }}
+                >
+                  <img
+                    src={aboutInfo.image || "https://res.cloudinary.com/dokkp5vkv/image/upload/v1769868851/Ayurveda/products/r11qaetwwsq3k6yafeu1.jpg"}
+                    alt={name}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
                 </div>
               </div>
 
-              {/* Work Details Card */}
-              <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
-                <h3 className="text-lg font-bold text-gray-900 mb-6 flex items-center border-b pb-3 border-gray-200">
-                  <Briefcase className="w-5 h-5 mr-2 text-[#8b7355]" />
-                  {language === 'mr' ? 'कामाचे तपशील' : 'Work Details'}
-                </h3>
-                <p className="text-gray-700 leading-relaxed font-medium text-lg">
-                  {workDetails}
+              {/* Identity & Expert Tag */}
+              <div className="mb-8">
+                <motion.div
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.3 }}
+                  className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm mb-4"
+                >
+                  <Activity className="w-3 h-3 text-green-400" />
+                  <span className="text-[9px] font-black uppercase tracking-[0.2em] text-white/60">
+                    {language === 'mr' ? 'आरोग्य तज्ञ' : 'Wellness Expert'}
+                  </span>
+                </motion.div>
+                <h1
+                  className="text-3xl md:text-4xl lg:text-5xl font-black mb-4 leading-[1.1] tracking-tighter"
+                  style={{ color: colors.tan }}
+                >
+                  {name}
+                </h1>
+                <p
+                  className="text-sm md:text-base font-medium opacity-80 leading-relaxed max-w-sm"
+                  style={{ color: colors.tan }}
+                >
+                  {language === 'mr'
+                    ? "मधुमेह आणि चयापचय आरोग्यामध्ये तज्ञ आयुर्वेदिक अभ्यासक."
+                    : "Ayurvedic practitioner specializing in diabetes and metabolic health care."}
                 </p>
               </div>
+
+              {/* Action Buttons - Grouped for "Single Frame" */}
+              <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
+                <motion.a
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  href={`tel:${aboutInfo.mobileNumber}`}
+                  className="px-6 py-3 rounded-full text-sm md:text-base font-black shadow-xl transition-all flex items-center gap-2"
+                  style={{
+                    background: `linear-gradient(135deg, ${colors.tan}, #e2b68e)`,
+                    color: colors.forest
+                  }}
+                >
+                  {language === 'mr' ? 'कॉल करा' : 'Call Now'}
+                  <Phone className="w-4 h-4" />
+                </motion.a>
+
+                <motion.a
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  href={`https://wa.me/91${aboutInfo.mobileNumber}`}
+                  target="_blank"
+                  className="px-6 py-3 rounded-full text-sm md:text-base font-black bg-white/10 text-white backdrop-blur-md border border-white/10 hover:bg-white/20 transition-all flex items-center gap-2"
+                >
+                  WhatsApp
+                  <MessageCircle className="w-4 h-4" />
+                </motion.a>
+              </div>
+            </motion.div>
+
+            {/* Side Highlights - Clean separation to prevent overlap */}
+            <div className="w-full md:w-[35%] flex flex-col gap-6 md:gap-8">
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.6 }}
+                className="p-6 rounded-[2rem] border border-white/10 bg-black/10 backdrop-blur-md"
+              >
+                <Activity className="w-5 h-5 mb-3" style={{ color: colors.tan }} />
+                <p className="text-white/30 text-[9px] font-black uppercase tracking-widest mb-1">Specialization</p>
+                <h3 className="text-lg font-bold text-white/90">Diabetes & Metabolic Health</h3>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.8 }}
+                className="p-6 rounded-[2rem] border border-white/10 bg-black/10 backdrop-blur-md"
+              >
+                <Briefcase className="w-5 h-5 mb-3" style={{ color: colors.tan }} />
+                <p className="text-white/30 text-[9px] font-black uppercase tracking-widest mb-1">Methodology</p>
+                <h3 className="text-lg font-bold text-white/90">Root-Cause Ayurvedic Recovery</h3>
+              </motion.div>
             </div>
-            
+
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* Info Sections */}
+      <section className="container mx-auto px-6 md:px-20 py-24 relative z-20">
+        <div className="grid lg:grid-cols-3 gap-8 md:gap-12">
+
+          {/* Work Details Card */}
+          <motion.div
+            whileHover={{ y: -5 }}
+            className="lg:col-span-2 p-10 md:p-16 rounded-[3rem] bg-white shadow-xl shadow-gray-200/50 border border-gray-100 flex flex-col justify-center"
+          >
+            <h2 className="text-xs font-black uppercase tracking-[0.4em] text-[#8b7355] mb-8">
+              {language === 'mr' ? 'माझ्या कामाबद्दल' : 'About My Work'}
+            </h2>
+            <p className="text-xl md:text-3xl font-bold font-serif leading-relaxed text-gray-800 tracking-tight">
+              "{workDetails}"
+            </p>
+          </motion.div>
+
+          {/* Contact Details Card */}
+          <motion.div
+            whileHover={{ y: -5 }}
+            className="p-10 rounded-[3rem] flex flex-col justify-between overflow-hidden shadow-2xl"
+            style={{ backgroundColor: colors.forest }}
+          >
+            <div>
+              <h2 className="text-[10px] font-black uppercase tracking-[0.4em] text-white/40 mb-10">
+                {language === 'mr' ? 'संपर्क माहिती' : 'Contact Information'}
+              </h2>
+
+              <div className="grid gap-8">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-white shrink-0">
+                    <Phone className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <p className="text-[10px] uppercase font-black text-tan/40 tracking-widest">Phone</p>
+                    <a href={`tel:${aboutInfo.mobileNumber}`} className="text-lg font-bold text-white hover:text-tan">{aboutInfo.mobileNumber}</a>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-white shrink-0">
+                    <Mail className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <p className="text-[10px] uppercase font-black text-tan/40 tracking-widest">Email</p>
+                    <a href={`mailto:${aboutInfo.emailId}`} className="text-base font-bold text-white break-all">{aboutInfo.emailId}</a>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-white shrink-0">
+                    <MapPin className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <p className="text-[10px] uppercase font-black text-tan/40 tracking-widest">Location</p>
+                    <p className="text-lg font-bold text-white leading-tight">{address}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-12 pt-10 border-t border-white/10">
+              <p className="text-[10px] font-black text-white/20 uppercase tracking-[0.3em]">Licensed Practitioner</p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       <Footer />
     </div>
   );
