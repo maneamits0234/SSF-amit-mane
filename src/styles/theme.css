@@ -9,14 +9,14 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  
+
   /* Updated Medical/Ayurvedic Color Palette */
   --primary: #2d7a3e;
   --primary-foreground: oklch(1 0 0);
   --primary-light: #e8f5e9;
   --secondary: #8b7355;
   --secondary-foreground: #030213;
-  
+
   --muted: #f5f5f0;
   --muted-foreground: #5a5a52;
   --accent: #fef7ed;
