@@ -1,2 +1,8 @@
-/* Import Google Fonts for Marathi Support */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+/* Google Fonts are now loaded non-blocking via <link> tags in index.html */
+/* font-display:swap is handled via the &display=swap URL parameter */
+
+/* Fallback font stack for before fonts load — prevents FOUT layout shift */
+:root {
+  --font-body: 'Inter', 'Noto Sans Devanagari', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-devanagari: 'Noto Sans Devanagari', 'Inter', system-ui, sans-serif;
+}

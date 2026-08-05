@@ -11,7 +11,9 @@ export function Layout() {
     <div className="min-h-screen bg-white">
       <ScrollRestoration />
       <Header cartItemCount={totalItems} onCartClick={() => setCartOpen(true)} />
-      <Outlet />
+      <main id="main-content" tabIndex={-1}>
+        <Outlet />
+      </main>
       <Cart
         isOpen={cartOpen}
         onClose={() => setCartOpen(false)}

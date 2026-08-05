@@ -1,0 +1,16 @@
+# robots.txt — Aaryuda Ayurveda
+# Generated: 2026-08-05
+
+User-agent: *
+Allow: /
+
+# Disallow utility/internal paths
+Disallow: /cart
+Disallow: /checkout
+Disallow: /*.json$
+
+# Crawl-delay for well-behaved bots
+Crawl-delay: 1
+
+# Sitemap
+Sitemap: https://www.aaryudaayurveda.com/sitemap.xml

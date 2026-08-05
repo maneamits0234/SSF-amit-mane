@@ -18,7 +18,7 @@ export function Footer() {
   const address = language === 'mr' ? contactInfo.addressMarathi : contactInfo.address;
 
   return (
-    <footer className="bg-[#0a1a0e] text-white pt-16 pb-8">
+    <footer role="contentinfo" className="bg-[#0a1a0e] text-white pt-16 pb-8">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand Section */}
@@ -48,7 +48,7 @@ export function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div className="flex flex-col items-center text-center md:items-start md:text-left">
+          <nav aria-label="Footer navigation" className="flex flex-col items-center text-center md:items-start md:text-left">
             <h3 className="text-lg font-bold mb-6 relative inline-block">
               {t("footer.links")}
               <span className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0 w-8 h-1 bg-[#2d7a3e] rounded-full"></span>
@@ -100,7 +100,7 @@ export function Footer() {
                 </a>
               </li>
             </ul>
-          </div>
+          </nav>
 
           {/* Language Selection */}
           <div className="flex flex-col items-center text-center md:items-start md:text-left">
