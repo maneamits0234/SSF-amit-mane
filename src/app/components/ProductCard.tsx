@@ -21,15 +21,19 @@ export function ProductCard({ product }: ProductCardProps) {
   return (
     <Link
       to={`/product/${product.id}`}
+      aria-label={`View ${productName} - ₹${product.price.discounted_price}`}
       className="group bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-[#2d7a3e]/20 flex flex-col"
     >
       {/* Image Container */}
       <div className="relative aspect-square overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100">
         <img
           src={product.image}
-          alt={productName}
+          alt={`${productName} - ${productCategory} by Aaryuda Ayurveda`}
+          width="400"
+          height="400"
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
           loading="lazy"
+          decoding="async"
         />
         {/* Tags Container */}
         <div className="absolute top-2 left-2 right-2 flex flex-col gap-2 pointer-events-none">

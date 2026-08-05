@@ -30,7 +30,7 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-white shadow-md border-b border-[#2d7a3e]/10">
+    <header role="banner" className="sticky top-0 z-50 bg-white shadow-md border-b border-[#2d7a3e]/10">
       {/* Top Bar - Contact Info */}
       <div className="bg-[#2d7a3e] text-white py-2">
         <div className="container mx-auto px-4">
@@ -71,7 +71,7 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-6 lg:gap-8">
+          <nav aria-label="Main navigation" className="hidden md:flex items-center gap-6 lg:gap-8">
             <Link 
               to="/" 
               className="text-gray-700 hover:text-[#2d7a3e] transition-colors font-medium"
@@ -165,7 +165,7 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <nav className="md:hidden py-4 border-t border-gray-200">
+          <nav aria-label="Mobile navigation" className="md:hidden py-4 border-t border-gray-200">
             <div className="flex flex-col gap-1">
                <Link
                  to="/"

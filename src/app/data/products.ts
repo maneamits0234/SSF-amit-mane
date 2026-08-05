@@ -93,7 +93,7 @@ export const contactInfo = {
 
 export const foundationInfo = {
   name: partnerInfo.name,
-  nameMarathi: partnerInfo.nameMarathi || "राजलक्ष्मी आयुर्वेद",
+  nameMarathi: partnerInfo.nameMarathi || "आर्युदा आयुर्वेद",
   tagline: partnerInfo.tagline || "Nature's Wisdom",
   taglineMarathi: partnerInfo.taglineMarathi || "निसर्गाचे ज्ञान",
   description: partnerInfo.description,

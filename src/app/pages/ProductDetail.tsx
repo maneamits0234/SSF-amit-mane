@@ -3,9 +3,10 @@ import { Star, ShoppingCart, Check, ArrowLeft, Package, Leaf, Shield, Phone, Mes
 import { products } from "../data/products";
 import { Footer } from "../components/Footer";
 import { ProductDetailSkeleton } from "../components/ProductDetailSkeleton";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useLanguage } from "../context/LanguageContext";
 import { useCart } from "../context/CartContext";
+import { useSEO } from "../hooks/useSEO";
 
 export function ProductDetail() {
   const { id } = useParams();
@@ -14,6 +15,110 @@ export function ProductDetail() {
   const product = currentProducts.find((p) => p.id === id);
   const [showStickyBar, setShowStickyBar] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+
+  // Build structured data only when product is available
+  const productStructuredData = useMemo(() => {
+    if (!product) return undefined;
+    const discount = product.price.mrp
+      ? Math.round(((product.price.mrp - product.price.discounted_price) / product.price.mrp) * 100)
+      : 0;
+    return [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.aaryudaayurveda.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": product.category,
+            "item": `https://www.aaryudaayurveda.com/#products`
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": product.name,
+            "item": `https://www.aaryudaayurveda.com/product/${product.id}`
+          }
+        ]
+      },
+      {
+        "@type": "Product",
+        "@id": `https://www.aaryudaayurveda.com/product/${product.id}`,
+        "name": product.name,
+        "description": product.shortDescription,
+        "image": [
+          product.image,
+          `${product.image.split('/upload/')[0]}/upload/f_webp,q_auto,w_800/${product.image.split('/upload/')[1]}`
+        ],
+        "brand": {
+          "@type": "Brand",
+          "name": "Aaryuda Ayurveda"
+        },
+        "manufacturer": {
+          "@type": "Organization",
+          "name": "Aaryuda Ayurveda",
+          "url": "https://www.aaryudaayurveda.com"
+        },
+        "category": product.category,
+        "url": `https://www.aaryudaayurveda.com/product/${product.id}`,
+        "sku": product.id,
+        "offers": {
+          "@type": "Offer",
+          "price": product.price.discounted_price,
+          "priceCurrency": "INR",
+          "priceValidUntil": "2027-12-31",
+          "availability": product.inStock
+            ? "https://schema.org/InStock"
+            : "https://schema.org/OutOfStock",
+          "seller": {
+            "@type": "Organization",
+            "name": "Aaryuda Ayurveda"
+          },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 10
+          },
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingRate": {
+              "@type": "MonetaryAmount",
+              "value": 0,
+              "currency": "INR"
+            },
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "IN"
+            }
+          }
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": product.rating,
+          "bestRating": product.rating_scale,
+          "ratingCount": 47
+        }
+      }
+    ];
+  }, [product]);
+
+  useSEO({
+    title: product
+      ? `${product.name} | Aaryuda Ayurveda`
+      : "Product Not Found | Aaryuda Ayurveda",
+    description: product
+      ? `${product.shortDescription} Buy ${product.name} online from Aaryuda Ayurveda. 100% natural, ₹${product?.price.discounted_price}. Free delivery.`
+      : "Product not found on Aaryuda Ayurveda.",
+    path: `/product/${id}`,
+    image: product?.image,
+    type: "product",
+    structuredData: productStructuredData,
+  });
 
   useEffect(() => {
     // Scroll to top on load
@@ -75,18 +180,31 @@ export function ProductDetail() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Back Button */}
-      <div className="bg-white border-b sticky top-[73px] md:top-[81px] z-40">
+      {/* Breadcrumb Navigation */}
+      <nav aria-label="Breadcrumb" className="bg-white border-b sticky top-[73px] md:top-[81px] z-40">
         <div className="container mx-auto px-4 py-3 md:py-4">
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 text-gray-600 hover:text-[#2d7a3e] transition-colors font-medium"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span className="text-sm md:text-base">{t("productDetail.back")}</span>
-          </Link>
+          <ol className="flex items-center gap-2 text-sm" itemScope itemType="https://schema.org/BreadcrumbList">
+            <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+              <Link to="/" className="text-gray-500 hover:text-[#2d7a3e] transition-colors" itemProp="item">
+                <span itemProp="name">{t("nav.home")}</span>
+              </Link>
+              <meta itemProp="position" content="1" />
+            </li>
+            <li aria-hidden="true" className="text-gray-300">/</li>
+            <li className="flex items-center gap-2 text-gray-600" itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+              <Link
+                to="/"
+                className="inline-flex items-center gap-2 text-gray-600 hover:text-[#2d7a3e] transition-colors font-medium"
+                itemProp="item"
+              >
+                <ArrowLeft className="w-4 h-4" aria-hidden="true" />
+                <span itemProp="name" className="text-sm md:text-base">{t("productDetail.back")}</span>
+              </Link>
+              <meta itemProp="position" content="2" />
+            </li>
+          </ol>
         </div>
-      </div>
+      </nav>
 
       <div className="container mx-auto px-4 py-6 md:py-10">
         <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
@@ -96,7 +214,11 @@ export function ProductDetail() {
               <div className="aspect-square rounded-2xl overflow-hidden shadow-md">
                 <img
                   src={product.image}
-                  alt={product.name}
+                  alt={`${product.name} - Ayurvedic product by Aaryuda Ayurveda`}
+                  width="600"
+                  height="600"
+                  fetchPriority="high"
+                  decoding="async"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 />
               </div>

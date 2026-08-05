@@ -4,7 +4,8 @@ import { ProductCardSkeleton } from "../components/ProductCardSkeleton";
 import { Footer } from "../components/Footer";
 import { contactInfo, companyInfo } from "../data/products";
 import { useLanguage } from "../context/LanguageContext";
-import { useState, useEffect } from "react";
+import { useSEO } from "../hooks/useSEO";
+import { useState, useEffect, useMemo } from "react";
 import { useLocation } from "react-router";
 
 export function Home() {
@@ -14,6 +15,106 @@ export function Home() {
   const allProducts = currentProducts;
 
   const location = useLocation();
+
+  // Structured data for Home page — memoized for stable reference
+  const homeStructuredData = useMemo(() => [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.aaryudaayurveda.com/#webpage",
+      "url": "https://www.aaryudaayurveda.com/",
+      "name": "Aaryuda Ayurveda | Ayurvedic Products for Diabetic Care",
+      "description": "100% natural Ayurvedic products for diabetes and metabolic health by Aaryuda Ayurveda, Kolhapur.",
+      "isPartOf": { "@id": "https://www.aaryudaayurveda.com/#website" },
+      "about": { "@id": "https://www.aaryudaayurveda.com/#organization" },
+      "inLanguage": ["mr", "hi", "en"]
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://www.aaryudaayurveda.com/#localbusiness",
+      "name": "Aaryuda Ayurveda",
+      "alternateName": "आर्युदा आयुर्वेद",
+      "image": "https://res.cloudinary.com/dokkp5vkv/image/upload/f_webp,q_auto/v1769232774/Ayurveda/products/kjopl73ftgoghpifiifw.jpg",
+      "telephone": "+91-9579164967",
+      "email": "info@aaryudaayurveda.com",
+      "url": "https://www.aaryudaayurveda.com",
+      "priceRange": "₹₹",
+      "description": "Authentic Ayurvedic products for diabetes care and metabolic health. 100% natural, no side effects.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "A/P Shirol",
+        "addressLocality": "Shirol",
+        "addressRegion": "Maharashtra",
+        "postalCode": "416103",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 16.7833,
+        "longitude": 74.6167
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+          "opens": "09:00",
+          "closes": "18:00"
+        }
+      ],
+      "sameAs": ["https://wa.me/919579164967"]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Are Aaryuda Ayurveda products 100% natural?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. All Aaryuda Ayurveda products are made from 100% natural Ayurvedic herbs and botanical extracts. They contain no synthetic chemicals, artificial additives, or harmful substances."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are these products safe for diabetes patients?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our products are specially formulated to provide Ayurvedic nutritional support for diabetes and metabolic health. They are designed to complement (not replace) prescribed medical care. Consult your physician before use."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the delivery policy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We offer free delivery across Maharashtra. Orders are dispatched within 2-3 business days. We also have a 10-day return policy for unused products in original packaging."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I order Aaryuda Ayurveda products?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can order by calling us at +91 9579164967 or via WhatsApp. We accept orders in Marathi, Hindi, and English. Products are delivered across India."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do these products have side effects?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our Ayurvedic products are formulated from natural herbs and are generally well-tolerated. They have no known significant side effects when used as directed. Individual responses may vary — consult a practitioner if you have concerns."
+          }
+        }
+      ]
+    }
+  ], []);
+
+  useSEO({
+    title: "Aaryuda Ayurveda | Ayurvedic Products for Diabetic Care | Kolhapur",
+    description: "Discover 100% natural Ayurvedic products for diabetes and metabolic health by Aaryuda Ayurveda, Kolhapur. No side effects, trusted by thousands. Call +91 9579164967.",
+    path: "/",
+    structuredData: homeStructuredData,
+  });
 
   useEffect(() => {
     // Simulate loading delay
@@ -77,7 +178,9 @@ export function Home() {
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
                 <button
+                  id="hero-call-btn"
                   onClick={handleCallNow}
+                  aria-label={`Call Aaryuda Ayurveda at ${contactInfo.phone}`}
                   className="group bg-[#2d7a3e] hover:bg-[#245c30] text-white px-6 md:px-8 py-3 md:py-4 rounded-xl transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2 text-base md:text-lg font-semibold"
                 >
                   <Phone className="w-5 h-5 group-hover:animate-pulse" />
@@ -85,7 +188,9 @@ export function Home() {
                 </button>
 
                 <button
+                  id="hero-whatsapp-btn"
                   onClick={handleWhatsApp}
+                  aria-label="Contact Aaryuda Ayurveda on WhatsApp"
                   className="group bg-[#25D366] hover:bg-[#20BA5A] text-white px-6 md:px-8 py-3 md:py-4 rounded-xl transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2 text-base md:text-lg font-semibold"
                 >
                   <MessageCircle className="w-5 h-5 group-hover:animate-pulse" />
@@ -115,7 +220,11 @@ export function Home() {
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <img
                   src="https://images.unsplash.com/photo-1705083649602-03c5fbae2e89?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxheXVydmVkaWMlMjBoZXJicyUyMG5hdHVyYWwlMjB3ZWxsbmVzc3xlbnwxfHx8fDE3NzUyMDgyMTh8MA&ixlib=rb-4.1.0&q=80&w=1080"
-                  alt="Ayurvedic Products"
+                  alt="Aaryuda Ayurveda - natural Ayurvedic herbs and wellness products"
+                  width="1080"
+                  height="500"
+                  fetchPriority="high"
+                  decoding="async"
                   className="w-full h-[300px] sm:h-[400px] lg:h-[500px] object-cover"
                 />
                 {/* Overlay Badge */}
@@ -346,6 +455,47 @@ export function Home() {
               <h3 className="font-bold text-gray-900 mb-1">{t("contact.whatsApp")}</h3>
               <p className="text-base text-[#2d7a3e] text-center font-bold">{t("contact.response")}</p>
             </button>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section — AEO/GEO Optimization for AI Search Engines */}
+      <section id="faq" aria-label="Frequently asked questions about Aaryuda Ayurveda" className="py-12 md:py-16 bg-white scroll-mt-20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-10">
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">
+                {language === 'mr' ? 'वारंवार विचारले जाणारे प्रश्न' : language === 'hi' ? 'अक्सर पूछे जाने वाले प्रश्न' : 'Frequently Asked Questions'}
+              </h2>
+              <p className="text-sm text-gray-600">
+                {language === 'mr' ? 'आमच्या उत्पादनांबद्दल सामान्य प्रश्नांची उत्तरे' : language === 'hi' ? 'हमारे उत्पादों के बारे में सामान्य प्रश्नों के उत्तर' : 'Answers to common questions about our Ayurvedic products'}
+              </p>
+            </div>
+            <dl className="space-y-4">
+              {[
+                {
+                  q: language === 'mr' ? 'आर्युदा आयुर्वेद उत्पादने 100% नैसर्गिक आहेत का?' : language === 'hi' ? 'क्या आर्युदा आयुर्वेद उत्पाद 100% प्राकृतिक हैं?' : 'Are Aaryuda Ayurveda products 100% natural?',
+                  a: language === 'mr' ? 'होय. आमची सर्व उत्पादने 100% नैसर्गिक आयुर्वेदिक वनस्पती आणि वनौषधी अर्कांपासून बनवलेली आहेत. त्यात कोणतेही कृत्रिम रसायने किंवा हानिकारक पदार्थ नाहीत.' : language === 'hi' ? 'हाँ। हमारे सभी उत्पाद 100% प्राकृतिक आयुर्वेदिक जड़ी-बूटियों से बने हैं। इनमें कोई कृत्रिम रसायन नहीं है।' : 'Yes. All our products are made from 100% natural Ayurvedic herbs. They contain no synthetic chemicals, artificial additives, or harmful substances.'
+                },
+                {
+                  q: language === 'mr' ? 'मधुमेह रुग्णांसाठी हे उत्पादने सुरक्षित आहेत का?' : language === 'hi' ? 'क्या ये उत्पाद मधुमेह रोगियों के लिए सुरक्षित हैं?' : 'Are these products safe for diabetes patients?',
+                  a: language === 'mr' ? 'आमची उत्पादने मधुमेह आणि चयापचय आरोग्यासाठी आयुर्वेदिक पोषण आधार म्हणून डिझाइन केलेली आहेत. ती डॉक्टरांच्या उपचाराला पूरक म्हणून काम करतात.' : language === 'hi' ? 'हमारे उत्पाद मधुमेह के लिए आयुर्वेदिक पोषण सहायता के रूप में डिज़ाइन किए गए हैं। वे चिकित्सा देखभाल के पूरक हैं।' : 'Our products are formulated as Ayurvedic nutritional support for diabetes and metabolic health, designed to complement (not replace) prescribed medical care.'
+                },
+                {
+                  q: language === 'mr' ? 'डिलिव्हरी धोरण काय आहे?' : language === 'hi' ? 'डिलीवरी नीति क्या है?' : 'What is the delivery policy?',
+                  a: language === 'mr' ? 'महाराष्ट्रभर मोफत डिलिव्हरी उपलब्ध आहे. ऑर्डर 2-3 कामकाजाच्या दिवसांत पाठवली जाते. न वापरलेल्या उत्पादनांसाठी 10 दिवसांचे परत करण्याचे धोरण आहे.' : language === 'hi' ? 'महाराष्ट्र में मुफ्त डिलीवरी उपलब्ध है। ऑर्डर 2-3 कार्य दिवसों में भेजा जाता है।' : 'Free delivery across Maharashtra. Orders dispatched in 2-3 business days. 10-day return policy for unused products in original packaging.'
+                },
+                {
+                  q: language === 'mr' ? 'उत्पादनांचे दुष्परिणाम आहेत का?' : language === 'hi' ? 'क्या इन उत्पादों के दुष्प्रभाव हैं?' : 'Do these products have side effects?',
+                  a: language === 'mr' ? 'आमची आयुर्वेदिक उत्पादने नैसर्गिक वनस्पतींपासून बनवलेली असून योग्य प्रमाणात वापरल्यास कोणतेही उल्लेखनीय दुष्परिणाम नाहीत.' : language === 'hi' ? 'हमारे उत्पाद प्राकृतिक जड़ी-बूटियों से बने हैं और निर्देशानुसार उपयोग करने पर कोई महत्वपूर्ण दुष्प्रभाव नहीं है।' : 'Our Ayurvedic products are made from natural herbs and have no known significant side effects when used as directed.'
+                },
+              ].map((item, i) => (
+                <div key={i} className="bg-gray-50 rounded-xl p-5 border border-gray-100">
+                  <dt className="font-bold text-gray-900 mb-2">{item.q}</dt>
+                  <dd className="text-gray-700 text-sm leading-relaxed">{item.a}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
         </div>
       </section>

@@ -2,8 +2,9 @@ import { aboutInfo } from "../data/products";
 import { useLanguage } from "../context/LanguageContext";
 import { Footer } from "../components/Footer";
 import { Mail, Phone, MapPin, Briefcase, MessageCircle, Activity, ArrowRight } from "lucide-react";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { motion } from "motion/react";
+import { useSEO } from "../hooks/useSEO";
 
 export function AboutUs() {
   const { language, t } = useLanguage();
@@ -15,6 +16,58 @@ export function AboutUs() {
   const name = language === 'mr' && aboutInfo.nameMarathi ? aboutInfo.nameMarathi : aboutInfo.name;
   const address = language === 'mr' && aboutInfo.addressMarathi ? aboutInfo.addressMarathi : aboutInfo.address;
   const workDetails = language === 'mr' && aboutInfo.workDetailsMarathi ? aboutInfo.workDetailsMarathi : aboutInfo.workDetails;
+
+  const aboutStructuredData = useMemo(() => [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.aaryudaayurveda.com/about#webpage",
+      "url": "https://www.aaryudaayurveda.com/about",
+      "name": "About Amit Mane | Aaryuda Ayurveda",
+      "description": "Learn about Amit Mane, Ayurvedic practitioner specializing in diabetic care and metabolic health at Aaryuda Ayurveda, Kolhapur.",
+      "isPartOf": { "@id": "https://www.aaryudaayurveda.com/#website" },
+      "inLanguage": ["mr", "hi", "en"]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.aaryudaayurveda.com/about#person",
+      "name": "Amit Mane",
+      "alternateName": "अमित माने",
+      "jobTitle": "Ayurvedic Practitioner",
+      "description": "Ayurvedic practitioner specializing in diabetes and metabolic health care. Providing responsible, guidance-led Ayurvedic care with a primary focus on addressing root imbalances.",
+      "telephone": `+91-${aboutInfo.mobileNumber}`,
+      "email": aboutInfo.emailId,
+      "url": "https://www.aaryudaayurveda.com/about",
+      "image": aboutInfo.image,
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Aaryuda Ayurveda",
+        "url": "https://www.aaryudaayurveda.com"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Shirol",
+        "addressRegion": "Maharashtra",
+        "postalCode": "416103",
+        "addressCountry": "IN"
+      },
+      "knowsAbout": [
+        "Ayurveda",
+        "Diabetes Care",
+        "Metabolic Health",
+        "Herbal Medicine",
+        "Root-cause healing"
+      ]
+    }
+  ], []);
+
+  useSEO({
+    title: "About Amit Mane | Ayurvedic Practitioner | Aaryuda Ayurveda",
+    description: "Meet Amit Mane, an Ayurvedic practitioner specializing in diabetic care and metabolic health. Aaryuda Ayurveda, Shirol, Kolhapur. Call +91 9579164967.",
+    path: "/about",
+    image: aboutInfo.image,
+    type: "profile",
+    structuredData: aboutStructuredData,
+  });
 
   // Exact color palette from the reference image
   const colors = {
@@ -148,6 +201,7 @@ export function AboutUs() {
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   href={`tel:${aboutInfo.mobileNumber}`}
+                  aria-label={`Call Amit Mane at ${aboutInfo.mobileNumber}`}
                   className="px-6 py-3 rounded-full text-sm md:text-base font-black shadow-xl transition-all flex items-center gap-2"
                   style={{
                     background: `linear-gradient(135deg, ${colors.tan}, #e2b68e)`,
@@ -155,7 +209,7 @@ export function AboutUs() {
                   }}
                 >
                   {language === 'mr' ? 'कॉल करा' : 'Call Now'}
-                  <Phone className="w-4 h-4" />
+                  <Phone className="w-4 h-4" aria-hidden="true" />
                 </motion.a>
 
                 <motion.a
@@ -163,10 +217,12 @@ export function AboutUs() {
                   whileTap={{ scale: 0.95 }}
                   href={`https://wa.me/91${aboutInfo.mobileNumber}`}
                   target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Chat with Amit Mane on WhatsApp"
                   className="px-6 py-3 rounded-full text-sm md:text-base font-black bg-white/10 text-white backdrop-blur-md border border-white/10 hover:bg-white/20 transition-all flex items-center gap-2"
                 >
                   WhatsApp
-                  <MessageCircle className="w-4 h-4" />
+                  <MessageCircle className="w-4 h-4" aria-hidden="true" />
                 </motion.a>
               </div>
             </motion.div>
