@@ -7,9 +7,9 @@
     "build": "vite build",
     "dev": "vite",
     "dev:amit-mane": "vite --mode amit-mane",
-    "dev:namdev": "vite --mode namdev",
+    "dev:diksha": "vite --mode diksha",
     "build:amit-mane": "vite build --mode amit-mane",
-    "build:namdev": "vite build --mode namdev"
+    "build:diksha": "vite build --mode diksha"
   },
   "dependencies": {
     "@emotion/react": "11.14.0",
